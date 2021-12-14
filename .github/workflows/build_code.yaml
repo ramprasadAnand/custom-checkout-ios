@@ -1,0 +1,10 @@
+name: Build SDK Code
+on: [push]
+jobs:
+  Build Xcode Project
+   runs-on: macOS-latest
+   steps:
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Application/Xcode_13.1.app
+    - name: Xcode Version
+      run: /usr/bin/xcodebuild -version
