@@ -1,7 +1,7 @@
 name: Build SDK Code
 on: [push]
 jobs:
-  Build Xcode Project
+  Build Xcode Project:
    runs-on: macOS-latest
    steps:
     - name: Select Xcode
