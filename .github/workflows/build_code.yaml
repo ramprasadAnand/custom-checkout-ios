@@ -5,6 +5,6 @@ jobs:
    runs-on: macOS-latest
    steps:
     - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+      run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
     - name: Xcode Version
       run: /usr/bin/xcodebuild -version
