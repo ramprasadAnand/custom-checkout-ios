@@ -16,7 +16,7 @@ enum PaymentType:String,Codable {
     case externalPaymentEntity
     case makeVASPayment
     case makeCredPayment
-    case upiPaymen
+    case upiPayment
 }
 
 class WebCheckoutVC: UIViewController {
@@ -35,7 +35,7 @@ class WebCheckoutVC: UIViewController {
         self.setConstraintsToWebView()
         self.setRightBarButtonItem()
         self.title = self.payload?.title
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.prefersLargeTitles = fals
     }
     
     override func viewWillAppear(_ animated: Bool) {
