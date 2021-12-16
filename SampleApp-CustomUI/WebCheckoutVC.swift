@@ -16,7 +16,7 @@ enum PaymentType:String,Codable {
     case externalPaymentEntity
     case makeVASPayment
     case makeCredPayment
-    case upiPayment
+    case upiPaymen
 }
 
 class WebCheckoutVC: UIViewController {
