@@ -1,7 +1,7 @@
 name: Build Xcode Project
 on: push
 jobs: 
-  Building the Xcode Project:
+  Building-the-Xcode-Project:
     runs-on: macOS-latest
     steps:
       - name: Select Xcode
