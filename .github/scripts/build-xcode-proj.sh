@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-xcodebuild test \
+xcodebuild \
         -project: SampleApp-CustomUI.xcodeproj \
         -configuration: debug \
         -scheme: SampleApp-CustomUI \
