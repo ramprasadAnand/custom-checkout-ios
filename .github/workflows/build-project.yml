@@ -1,0 +1,16 @@
+name: Build Xcode Project
+on: [push]
+jobs: 
+  Building-the-Xcode-Project:
+    runs-on: macOS-latest
+    steps:
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+      - name: Xcode Version
+        run: /usr/bin/xcodebuild -version
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Set permission
+        run: exec chmod +x ./.github/scripts/build-xcode-proj.sh
+      - name: Build Xcode Project
+        run: exec ./.github/scripts/build-xcode-proj.sh

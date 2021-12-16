@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Razorpay
 
 struct PayloadModel {
     var title: String
     var options: [String: Any]
-    var key: String = "rzp_test_1DP5mmOlF5G5ag"
+    //    var key: String = "rzp_test_1DP5mmOlF5G5ag"
+    //    var key: String = "rzp_live_6KzMg861N1GUS8"
+    var key: String = "rzp_live_cepk1crIu9VkJU"  // Use this key for cred payment
     var paymentType: PaymentType
 }
 
@@ -18,7 +21,7 @@ class MenuVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var payloadArray: [PayloadModel] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let dynamicFlowLayout = self.collectionView.collectionViewLayout as? DynamicHeightFlowLayout else{
@@ -27,6 +30,9 @@ class MenuVC: UIViewController {
         }
         dynamicFlowLayout.delegate = self
         self.populateDataSource()
+        RazorpayCheckout.getAppsWhichSupportUpi { upiApps in
+            print("Supported UPI apps \(upiApps)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,9 +76,9 @@ extension MenuVC: UICollectionViewDelegate {
 extension MenuVC {
     
     func populateDataSource() {
-
+        
         var cardPaymentDict: [String : Any] = [:]
-            
+        
         cardPaymentDict = [
             "amount": "100",
             "currency": "INR",
@@ -84,6 +90,7 @@ extension MenuVC {
             "card[expiry_month]": "11",
             "card[expiry_year]": "23",
             "card[cvv]": "123",
+            "random-key": "hello",
             "display_logo": false
         ]
         self.payloadArray = [PayloadModel(title: "Card Payment", options: cardPaymentDict, paymentType: .makePayment)]
@@ -92,11 +99,12 @@ extension MenuVC {
         cardPaymentDict = [
             "amount": "100",
             "currency": "INR",
-            "email": "a@b.com",
-            "contact": "123456789",
+            "email": "ramprasad179@gmail.com",
+            "contact": "9663976539",
             "app_present": isCredAppAvailable(),
             "method": "app",
-            "provider": "cred"
+            "provider": "cred",
+            //            "order_id": "uyu_jhjksja"
         ]
         if (isCredAppAvailable() == 1) {
             cardPaymentDict["callback_url"] = "razorpay://"
@@ -120,10 +128,11 @@ extension MenuVC {
         cardPaymentDict = [
             "amount": "100",
             "currency": "INR",
-            "email": "a@b.com",
-            "contact": "123456789",
+            "email": "ramprasad179@gmail.com",
+            "contact": "9663976539",
             "method": "wallet",
             "wallet": "olamoney",
+            "FRAMEWORK": "flutter-customui"
         ]
         
         self.payloadArray += [PayloadModel(title: "Wallet Payment", options: cardPaymentDict, paymentType: .makePayment)]
@@ -149,15 +158,15 @@ extension MenuVC {
             "amount": 100, // amount in currency subunits. Defaults to INR. 100 = 100 paise = INR 1.
             "currency": "INR",
             "email": "a@b.com",
-            "contact": "123456789",
+            "contact": "9663976539",
             "method": "upi",
-            "vpa":"1234567890@upi",
-            "_[flow]": "collect"
+            "vpa":"9663976539@upi",
+            "_[flow]": "collect",
+            "FRAMEWORK": "flutter-customui"
         ]
         self.payloadArray += [PayloadModel(title: "UPI", options: cardPaymentDict, paymentType: .makePayment)]
         cardPaymentDict = [:]
     }
-    
 }
 
 extension MenuVC: DynamicHeightFlowLayoutDelegate {
@@ -205,3 +214,4 @@ extension MenuVC {
         return 0
     }
 }
+
