@@ -3,6 +3,6 @@
 set -eo pipefail
 
 xcodebuild \
-        -project: SampleApp-CustomUI.xcodeproj \
+        -workspace: SampleApp-CustomUI.xcodeproj \
         -configuration: debug \
         -scheme: SampleApp-CustomUI \
