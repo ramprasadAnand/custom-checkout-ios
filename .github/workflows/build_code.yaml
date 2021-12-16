@@ -8,3 +8,8 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
     - name: Xcode Version
       run: /usr/bin/xcodebuild -version
+    - uses: actions/checkout@v2
+    - name: Swift Build
+      run: swift build
+    - name: Run tests
+      run: swift test
