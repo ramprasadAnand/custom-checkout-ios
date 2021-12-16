@@ -11,8 +11,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Build Xcode Project
-        run: xcodebuild \
+        run: xcodebuild test \
         -project: SampleApp-CustomUI.xcodeproj \
         -configuration: debug \
         -scheme: SampleApp-CustomUI \
-        test
