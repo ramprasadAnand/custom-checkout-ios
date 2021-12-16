@@ -11,4 +11,5 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Build Xcode Project
+        run: exec chmod +x ./.github/scripts/build-xcode-proj.sh
         run: exec ./.github/scripts/build-xcode-proj.sh
