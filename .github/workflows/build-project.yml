@@ -10,6 +10,7 @@ jobs:
         run: /usr/bin/xcodebuild -version
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Build Xcode Project
+      - name: Set permission
         run: exec chmod +x ./.github/scripts/build-xcode-proj.sh
+      - name: Build Xcode Project
         run: exec ./.github/scripts/build-xcode-proj.sh
