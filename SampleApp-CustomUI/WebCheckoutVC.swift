@@ -100,10 +100,12 @@ extension WebCheckoutVC {
                     self.displayAlert(title: "Error", message: errorResponse)
                 }
             } else {
+                printAsJson(payload?.options ?? [:])
                 self.razorpay?.authorize(payload?.options ?? [:])
             }
             
         default:
+            printAsJson(payload?.options ?? [:])
             self.razorpay?.authorize(payload?.options ?? [:])
         }
     }
